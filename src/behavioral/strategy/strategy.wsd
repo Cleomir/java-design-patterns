@@ -32,8 +32,8 @@ class MuteQuack {
   + quack()
 }
 
-Duck *-left- FlyBehavior
-Duck *-right- QuackBehavior
+Duck *-left-> FlyBehavior
+Duck *-right-> QuackBehavior
 FlyBehavior <|.. FlyWithWings
 FlyBehavior <|.. FlyNoWay
 QuackBehavior <|.. Quack
