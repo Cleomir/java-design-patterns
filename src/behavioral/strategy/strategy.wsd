@@ -1,0 +1,42 @@
+@startuml strategy
+class Duck {
+  - FlyBehavior flyBehavior
+  - QuackBehavior quackBehavior
+  + quack()
+  + fly()
+  + setQuackBehavior(QuackBehavior)
+  + setFlyBehavior(FlyBehavior)
+}
+
+interface FlyBehavior {
+  + fly()
+}
+
+interface QuackBehavior {
+  + quack()
+}
+
+class FlyWithWings {
+  + fly()
+}
+
+class FlyNoWay {
+  + fly()
+}
+
+class Quack {
+  + quack()
+}
+
+class MuteQuack {
+  + quack()
+}
+
+Duck *-left- FlyBehavior
+Duck *-right- QuackBehavior
+FlyBehavior <|.. FlyWithWings
+FlyBehavior <|.. FlyNoWay
+QuackBehavior <|.. Quack
+QuackBehavior <|.. MuteQuack
+
+@enduml
