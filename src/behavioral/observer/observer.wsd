@@ -20,8 +20,8 @@ class ConcreteObserver {
     void update();
 }
 
-Subject *-right-> Observer
 Subject <|-- ConcreteSubject
 Observer <|-- ConcreteObserver
+ConcreteSubject *-right-> Observer
 
 @enduml
