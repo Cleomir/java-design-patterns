@@ -1,0 +1,32 @@
+@startuml decorator
+
+abstract class Component {
+  ~ string description
+  + string getDescription()
+  + abstract double cost()
+}
+
+abstract class Decorator {
+  ~ Component component
+  + string getDescription()
+  + abstract double cost()
+}
+
+class ConcreteComponent {
+  + double cost()
+}
+
+class ConcreteDecoratorA {
+  + double cost()
+}
+
+class ConcreteDecoratorB {
+  + double cost()
+}
+
+Decorator *-left-> Component
+Component <|-- ConcreteComponent
+Component <|-- Decorator
+Decorator <|-- ConcreteDecoratorA
+Decorator <|-- ConcreteDecoratorB
+@enduml
