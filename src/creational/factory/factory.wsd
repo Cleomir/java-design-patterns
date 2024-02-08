@@ -1,0 +1,22 @@
+@startuml factory
+abstract class Creator {
+  + abstract factoryMethod(String type): Product
+}
+
+class ConcreteCreator {
+  + factoryMethod(String type): Product
+}
+
+interface Product {
+  + abstract operation()
+}
+
+class ConcreteProduct {
+  + operation()
+}
+
+Creator *-right-> Product : Returns
+Creator <|-- ConcreteCreator
+Product <|.. ConcreteProduct
+
+@enduml
