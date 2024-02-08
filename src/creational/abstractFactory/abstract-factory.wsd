@@ -1,0 +1,61 @@
+@startuml abstract-factory
+abstract class Creator {
+  + abstract factoryMethod(String type): Product
+}
+
+class ConcreteCreator {
+  + factoryMethod(String type): Product
+}
+
+interface Product {
+  + abstract operation()
+}
+
+interface AbstractItem {
+  + operation(): String
+}
+
+class ConcreteItemA {
+  + operation()
+}
+
+class ConcreteItemB {
+  + operation()
+}
+
+interface AbstractFactory {
+  + createProduct(): AbstractItem
+}
+
+class ConcreteFactoryA {
+  + createProduct(): AbstractItem
+}
+
+class ConcreteFactoryB {
+  + createProduct(): AbstractItem
+}
+
+class ConcreteProductA {
+  - factory: AbstractFactory
+  + operation()
+}
+
+class ConcreteProductB {
+  - factory: AbstractFactory
+  + operation()
+}
+
+Creator *-right-> Product : Returns
+ConcreteFactoryA *-down-> AbstractItem: Returns
+ConcreteFactoryB *-down-> AbstractItem: Returns
+ConcreteProductA *-down-> AbstractFactory: Uses
+ConcreteProductB *-down-> AbstractFactory: Uses
+Creator <|-- ConcreteCreator
+Product <|.. ConcreteProductA
+Product <|.. ConcreteProductB
+AbstractItem <|.. ConcreteItemA
+AbstractItem <|.. ConcreteItemB
+AbstractFactory <|.. ConcreteFactoryA
+AbstractFactory <|.. ConcreteFactoryB
+
+@enduml
