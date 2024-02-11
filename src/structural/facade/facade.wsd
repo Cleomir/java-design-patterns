@@ -1,0 +1,27 @@
+@startuml facade
+
+class Facade {
+  - classA: ClassA
+  - classB: ClassB
+  - classC: ClassC
+  + operation()
+}
+
+Class ClassA {
+  + operationA()
+}
+
+Class ClassB {
+  + operationB()
+}
+
+Class ClassC {
+  + operationC()
+}
+
+Facade *--> ClassA 
+Facade *--> ClassB
+Facade *--> ClassC
+
+
+@enduml
