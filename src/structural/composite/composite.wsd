@@ -1,0 +1,24 @@
+@startuml composite
+
+class Component {
+  + abstract operation(): void
+  + isComposite(): bool
+}
+
+class Composite {
+  - children: List<Component>
+  + add(c: Component): void
+  + remove(c: Component): void
+  + getChild(i: int): Component
+
+}
+
+class Leaf {
+  + operation(): void
+}
+
+Composite -up-|> Component
+Component <|-- Leaf
+
+
+@enduml
