@@ -1,0 +1,29 @@
+@startuml state
+
+interface State {
+  + handle()
+}
+
+class ConcreteStateA {
+  - context: Context
+  + handle()
+}
+
+class ConcreteStateB {
+  - context: Context
+  + handle()
+}
+
+class Context {
+  - state: State
+  + request()
+  + setState(State)
+  + getState()
+}
+
+State <|.. ConcreteStateA
+State <|.. ConcreteStateB
+Context *-right-> State
+
+
+@enduml
