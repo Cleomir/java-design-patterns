@@ -1,0 +1,26 @@
+@startuml iterator
+
+interface Iterator {
+  +hasNext(): boolean
+  +next(): Object
+}
+
+class ConcreteIterator {
+  -index: number
+  -aggregate: Aggregate[]
+  +hasNext(): boolean
+  +next(): Object
+}
+
+class Aggregate {
+  -list: Object[]
+  -count: number
+  +add(obj: Object): void
+  +get(index: number): Object
+  +size(): number
+}
+
+ConcreteIterator .up.|> Iterator
+ConcreteIterator *-right-> Aggregate
+
+@enduml
