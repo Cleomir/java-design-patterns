@@ -1,6 +1,6 @@
-package creational.bridge;
+package structural.bridge;
 
-import creational.bridge.interfaces.Implementor;
+import structural.bridge.interfaces.Implementor;
 
 public abstract class Abstraction {
 
