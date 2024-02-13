@@ -1,0 +1,26 @@
+@startuml bridge
+
+class Abstraction {
+  -implementor: Implementor
+  +operation()
+  +abstract otherOperation()
+}
+
+class RefinedAbstraction {
+  +operation()
+  +otherOperation()
+}
+
+interface Implementor {
+  +operation()
+}
+
+class ConcreteImplementor{
+  +operation()
+}
+
+Abstraction *-right-> Implementor
+Implementor <|.. ConcreteImplementor
+RefinedAbstraction -up-|> Abstraction
+
+@enduml
