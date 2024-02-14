@@ -1,0 +1,32 @@
+@startuml chainOfResponsibility
+
+interface Handler {
+  + setNextHandler(Handler handler): Handler
+  + handleRequest(string request): void
+}
+
+abstract class AbstractHandler {
+  - nextHandler: Handler
+  + setNextHandler(Handler handler): Handler
+  + handleRequest(string request): void
+}
+
+class ConcreteHandlerA {
+  + handleRequest(string request): void
+}
+
+class ConcreteHandlerB {
+  + handleRequest(string request): void
+}
+
+class Client {
+  - handler: Handler
+  + makeRequest(string request): void
+}
+
+Handler <|.. AbstractHandler
+AbstractHandler <|-- ConcreteHandlerA
+AbstractHandler <|-- ConcreteHandlerB
+Client *-right-> Handler
+
+@enduml
