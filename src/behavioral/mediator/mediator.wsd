@@ -1,0 +1,36 @@
+@startuml mediator
+
+interface Mediator {
+  + notify(sender: Colleague, event: string)
+}
+
+abstract class Colleague {
+  - mediator: Mediator
+  + setMediator(mediator: Mediator): void
+  + abstract onEvent(event: string): void
+}
+
+class ConcreteColleagueA {
+  + doA(): void
+  + doB(): void
+  + onEvent(event: string): void
+}
+
+class ConcreteColleagueB {
+  + doC(): void
+  + doD(): void
+  + onEvent(event: string): void
+}
+
+class ConcreteMediador {
+  - ColleagueA: ConcreteColleagueA
+  - ColleagueB: ConcreteColleagueB
+  + notify(sender: Colleague, event: string): void
+}
+
+Mediator <|.. ConcreteMediador
+Colleague <|-- ConcreteColleagueA
+Colleague <|-- ConcreteColleagueB
+ConcreteMediador *-right-* Colleague
+
+@enduml
