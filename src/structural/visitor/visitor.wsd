@@ -1,0 +1,25 @@
+@startuml visitor
+
+interface Component {
+  + accept(Visitor visitor)
+}
+
+interface Visitor {
+  + visit(Component component)
+}
+
+class ConcreteComponent {
+  + accept(Visitor visitor)
+  + operation()
+}
+
+class ConcreteVisitor {
+  + visit(ConcreteComponent component)
+}
+
+Component <|.. ConcreteComponent
+Component *-right-* Visitor
+Visitor <|.. ConcreteVisitor
+
+
+@enduml
